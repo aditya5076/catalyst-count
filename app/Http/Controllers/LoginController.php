@@ -36,7 +36,7 @@ class LoginController extends Controller
             $errors = [
                 'message' => 'Invalid credentials'
             ];
-            return redirect()->back()->with('errors', $errors);
+            return redirect()->to('/')->with('errors', $errors);
         }
     }
     public function show_signup_form()

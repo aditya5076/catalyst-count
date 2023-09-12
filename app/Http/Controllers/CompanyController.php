@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Jobs\ProcessCSVFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -67,12 +68,12 @@ class CompanyController extends Controller
 
             $count = count($companies->get());
 
-            $companies = $companies->paginate(10);
+            $companies = $companies->simplePaginate(10);
 
             return view('index', compact('count', 'companies'));
         }
 
-        $companies = Company::paginate(10);
+        $companies = DB::table('companies')->simplePaginate(10);
 
         return view('index', compact('companies'));
     }
