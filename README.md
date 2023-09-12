@@ -62,7 +62,17 @@ Follow these steps to set up and run the application:
     php artisan serve
     ```
 
-8. **Access the Application**: Open your web browser and access the application at `http://localhost:8000`. You can register an account, log in, and start using the application.
+8. **Start the Queue Worker**: To process jobs in the queue, you need to start a queue worker:
+
+    ```bash
+    php artisan queue:work
+    ```
+
+    This command will start a queue worker that processes jobs from the queue. Make sure to configure your queue worker to suit your production environment, such as using Supervisor to keep the worker running in the background.
+
+    With these steps, you can upload a large CSV file using Laravel and process it in the background using queues, which is essential for handling large files without affecting your web server's performance.
+
+9. **Access the Application**: Open your web browser and access the application at `http://localhost:8000`. You can register an account, log in, and start using the application.
 
 ## Usage
 
